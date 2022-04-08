@@ -1,42 +1,36 @@
-import subprocess
+# icon from https://www.flaticon.com/premium-icon/browser_1779307
 import rumps
 import os
 
-dns = ["192.168.1.1", "192.168.1.10"]
-
-[router, pihole] = dns
+dns = [{"router": "192.168.1.1"}, {"Dns1": "192.168.1.2"}, {"Dns2": "192.168.1.4"}]
 
 
 class DNS_changing(rumps.App):
-
     def __init__(self):
-        super(DNS_changing, self).__init__("DNS Changing", title="DNS Change")
-        ns = os.popen(f"networksetup -getdnsservers Wi-Fi").read()
-        self.menu.add(ns)
+        super(DNS_changing, self).__init__("DNS Changing", title="Change DNS")
         self.first = True
 
-    # button function
-    @rumps.clicked("Router!")
-    def router(self, _):
+    @rumps.clicked("Find my Dns?")
+    def find(self,_):
+        rumps.alert("Your DNS is at", os.popen(f"networksetup -getdnsservers Wi-Fi").read(), icon_path="assets/icon.png", )
 
-        os.system(f"networksetup -setdnsservers Wi-Fi {router}")
-        if self.first:
-            self.menu.pop(self.menu.items()[0][0])
-            self.first = False
-        else:
-            self.menu.pop(self.menu.items()[len(self.menu) - 1][0])
-        self.menu.add("Router")
+    for i in range(len(dns)):
+        n= str(list(dns)[i]).replace("{", "").replace("'", "").replace("}", "").replace(": ", "-")
+        @rumps.clicked(n)
+        def router(self, _=None):
+            if _ is None:
+                name = self.title
+            else:
+                name = _.title
+            ip = name.split('-')[1]
 
-    # button function
-    @rumps.clicked("Pihole!")
-    def pi_hole(self, _):
-        os.system(f"networksetup -setdnsservers Wi-Fi {pihole}")
-        if self.first:
-            self.menu.pop(self.menu.items()[0][0])
-            self.first = False
-        else:
-            self.menu.pop(self.menu.items()[len(self.menu) - 1][0])
-        self.menu.add("Pihole")
+            cmd = f"networksetup -setdnsservers Wi-Fi {ip}"
+            os.system(cmd)
+            rumps.alert("DNS Changed", os.popen(f"networksetup -getdnsservers Wi-Fi").read(), icon_path="assets/icon.png")
+
+
+
+
 
 
 if __name__ == "__main__":
