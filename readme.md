@@ -59,5 +59,5 @@ I acknowledge the following:
 2. I dont and will not take responsibility for any misuse of this application.  
 3. License: You can use this for you project. Just make sure to say where you got it from
 
-
-
+## Py2App
+Ofcourse, you can build an app out this code after you add your configuration follow [this tutorial](http://www.marinamele.com/from-a-python-script-to-a-portable-mac-application-with-py2app)
