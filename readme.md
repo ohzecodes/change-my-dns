@@ -50,7 +50,7 @@ and there is not a way to reach the parent from the menu item in the current ver
 
 
 ## Visuals and code samples
-![visual of the menu bar]("assets/visual1.png")
+![visual of the menu bar](https://github.com/ohzecodes/changemyDns/blob/main/assets/visual%201.png?raw=true)
 
 
 ## Disclaimer 
