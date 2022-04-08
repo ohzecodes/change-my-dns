@@ -50,10 +50,10 @@ and there is not a way to reach the parent from the menu item in the current ver
 
 
 ## Visuals and code samples
-![visual of the menu bar](assets/visual 1.png)
+![visual of the menu bar]("assets/visual1.png")
 
 
-##Disclaimer 
+## Disclaimer 
 I acknowledge the following: 
 1. This application is built with good intent. 
 2. I dont and will not take responsibility for any misuse of this application.  
