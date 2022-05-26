@@ -61,3 +61,10 @@ I acknowledge the following:
 
 ## Py2App
 Ofcourse, you can build an app out this code after you add your configuration follow [this tutorial](http://www.marinamele.com/from-a-python-script-to-a-portable-mac-application-with-py2app)
+
+## Background App 
+If you decide to build the app, and need it to be in the background. go to `info.plist` folder where you build this, add 
+```
+<key>LSUIElement</key><true/>	
+```
+at the end of the file before your last dict closes (`</dict>`) tag 
